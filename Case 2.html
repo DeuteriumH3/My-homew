@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Case 2</title>
+    </head>
+    <body>
+    <script>
+         "use strict";
+  
+		  /*Создайте класс "Банковский счёт", который имеет следующие атрибуты:
+			- номер;
+			- вкладчик;
+			- денежная сумма;
+			- годовой процент.
+				
+			Добавьте методы, осуществляющие следующие операции:
+				- внести средства;
+				- начислить проценты.
+			  
+			Создайте элемент массива "Бансковский счёт".
+			
+			S = (P x I x t / K) / 100
+			S – прибыль со вклада (только проценты, без тела вклада);
+			P – сумма, изначально внесенная на депозит;
+			I – размер % ставки (за год);
+			t – кол-во дней начисления %;
+			K – кол-во дней за год по календарю.*/
+
+			// Вкладчик
+			class Contributor {
+
+			constructor(firstName, lastName) {
+				this.firstName = firstName;
+				this.lastName = lastName;
+				}
+			}
+		  
+			// Банковский счёт
+			class bankAccount {
+
+				constructor(number, contributor, money, percent, K = 365) {
+					this.number = number;
+					this.contributor = contributor;
+					this.money = money;
+					this.percent = percent;
+					this.K = K;
+					}
+
+				// Внесение средств
+				addMoney(amount) {
+					this.money += amount;
+				}
+				
+				// Процент
+				getInterest(days) {
+					const S = this.money + (this.money * this.percent * days / this.K) / 100;
+					return S;
+				}
+
+			}
+
+				let contributor1 = new Contributor("Рудольф", "Майне");
+				let constructor2 = new Contributor("Гена", "Букин");
+
+				let accounts = [
+					new bankAccount(8800, contributor1, 1000, 5, 365),
+					new bankAccount(5553, constructor2, 500, 2, 366) // Високосный
+				];
+				
+			console.log(accounts[0]);
+			console.log(accounts[1]);
+			
+			accounts.forEach(account => {
+				let interest = account.getInterest(30);
+				console.log(`Вкладчик: ${account.contributor.firstName} ${account.contributor.lastName}, счёт: ${account.number}, начисленные за 30 дней проценты: ${interest.toFixed(2)}`);
+			});
+    </script>
+    </body>
+</html>

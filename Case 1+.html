@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Case 1+</title>
+    </head>
+    <body>
+    <script>
+         "use strict";
+  
+		  /*Реализуйте класс Student, который будет наследовать от класса User.
+		  Этот класс должен иметь следующие свойства:
+			- firstName (имя, наследуется от User);
+			- lastName (фамилия, наследуется от User)
+			- year (год поступления в вуз)
+			
+			Класс должен иметь метод getFullName() (наследуется от User), с помощью которого можно
+			вывести одновременно имя и фамилию студента. Также класс должен иметь метод getCourse(),
+			оторый будет выводить текущий курс студента (от 1 до 5). Курс вычисляется так:
+			нужно от текущего года отнять год поступления в вуз. Текущий год получите самостоятельно.*/
+		  
+			class User {
+
+				constructor(firstName, lastName) {
+					this.firstName = firstName;
+					this.lastName = lastName;
+				}
+				
+				getFullName() {
+					return this.firstName + " " + this.lastName;
+				}
+			}
+			  
+			class Student extends User {
+			  
+				constructor(firstName, lastName, year) {
+					super(firstName, lastName);
+					this.year = year;
+				}
+			  
+			getCourse() {let currentYear = new Date().getFullYear();
+				return currentYear - this.year;
+				}
+
+			}
+
+				let student1 = new Student("Рудольф", "Майне", 2019);
+			
+			console.log("Студент:", student1.getFullName());
+			console.log("Курс:", student1.getCourse());
+    </script>
+    </body>
+</html>

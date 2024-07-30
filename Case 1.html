@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Case 1</title>
+    </head>
+    <body>
+    <script>
+         "use strict";
+  
+		  /*Реализуйте класс Employee (Работник), который будет иметь следующие свойста:
+				- firstName (имя);
+				- lastName (фамилия);
+				- rate (оплата за день работы);
+				- days (количество отработанных дней).
+				
+			Также класс должен содержать метод getSalary(), который будет вычислять зарплату
+			работника за всё время и метод toString(), который будет выводить фамилию и имя
+			работника, а также зарплату, вычисляему методом getSalary().*/
+		  
+			class Employee {
+
+				constructor(firstName, lastName, rate = 2000, days = 365) {
+					this.firstName = firstName;
+					this.lastName = lastName;
+					this.rate = rate;
+					this.days = days;
+				}
+
+				getSalary() {
+					return this.rate * this.days;
+				}
+				
+				toString() {
+					return this.firstName + " " + this.lastName + ": " + String(this.getSalary());
+				}
+
+			}
+
+			let employee1 = new Employee("Рудольф", "Майне");
+				
+			console.log("Сотрудник:", employee1.toString());
+    </script>
+    </body>
+</html>
